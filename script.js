@@ -21,6 +21,7 @@ window.addEventListener("load",function(){
                 </ol>
                 <img src = "${json[planet].image}">
             `;
+            // grab all the mission destination required fields & image
         })
     })
 // })
@@ -34,17 +35,22 @@ form.addEventListener("submit",function(){
   let cargoInput = document.querySelector("input[name=cargoMass]").value;
   let checkOne;
   let checkTwo;
+  //set up form by declaring required inputs  
 
 if (pilotInput == "" || !isNaN(pilotInput)) {
-    alert("Please Enter a Pilot Name");
+    // verify user doesn't leave field blank
+    alert("Please Enter a Pilot Name");  
     event.preventDefault();
   } else if (copilotInput == "" || !isNaN(copilotInput)) {
+      // verify user doesn't leave field blank
     alert("Please Enter a Copilot Name");
     event.preventDefault();
   } else if (isNaN(fuelInput) || fuelInput == "") {
+      // verify user doesn't leave field blank and that the value is a number
     alert("Please make sure that Fuel is entered as a number");
     event.preventDefault();
   } else if (isNaN(cargoInput) || cargoInput == "") {
+    // verify user doesn't leave field blank and that the value is a number
     alert("Please make sure that Cargo is entered as a number");
     event.preventDefault();
   } else {
@@ -54,6 +60,7 @@ if (pilotInput == "" || !isNaN(pilotInput)) {
     document.getElementById(
       "copilotStatus"
     ).innerHTML = `Copilot ${copilotInput} is ready for launch`;
+    //if the fuel is under limit, make list visible, header goes red, and alert user that all is not well.
     if (Number(fuelInput) < 10000) {
       document.getElementById("faultyItems").style.visibility = "visible";
       document.getElementById("launchStatus").style.color = "red";
@@ -67,6 +74,7 @@ if (pilotInput == "" || !isNaN(pilotInput)) {
       document.getElementById("fuelStatus").innerHTML = `Fuel level is good`;
       checkOne = true;
     }
+    //if the cargo mass is over limit, make list visible, header goes red, and alert user that all is not well.
     if (Number(cargoInput) > 10000) {
       document.getElementById("faultyItems").style.visibility = "visible";
       document.getElementById("launchStatus").style.color = "red";
@@ -83,6 +91,7 @@ if (pilotInput == "" || !isNaN(pilotInput)) {
       checkTwo = true;
     }
   }
+  //if all checks pass, hid the list, header goes green, and alert user all is GOOD!
   if (checkOne == true && checkTwo == true) {
     document.getElementById("faultyItems").style.visibility = "hidden";
     document.getElementById("launchStatus").style.color = "green";
