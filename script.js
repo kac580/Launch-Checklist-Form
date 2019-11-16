@@ -29,39 +29,39 @@ window.addEventListener("load",function(){
 let form = document.querySelector("form");
 form.addEventListener("submit",function(){
   event.preventDefault();
-  let pilotInput = document.querySelector("input[name=pilotName]").value;
-  let copilotInput = document.querySelector("input[name=copilotName").value;
-  let fuelInput = document.querySelector("input[name=fuelLevel]").value;
-  let cargoInput = document.querySelector("input[name=cargoMass]").value;
+  let pilot = document.querySelector("input[name=pilotName]").value;
+  let copilot = document.querySelector("input[name=copilotName").value;
+  let fuel = document.querySelector("input[name=fuelLevel]").value;
+  let cargo = document.querySelector("input[name=cargoMass]").value;
   let checkOne;
   let checkTwo;
   //set up form by declaring required inputs  
 
-if (pilotInput == "" || !isNaN(pilotInput)) {
+if (pilot == "" || !isNaN(pilot)) {
     // verify user doesn't leave field blank
     alert("Please Enter a Pilot Name");  
     event.preventDefault();
-  } else if (copilotInput == "" || !isNaN(copilotInput)) {
+  } else if (copilot == "" || !isNaN(copilot)) {
       // verify user doesn't leave field blank
     alert("Please Enter a Copilot Name");
     event.preventDefault();
-  } else if (isNaN(fuelInput) || fuelInput == "") {
+  } else if (isNaN(fuel) || fuel == "") {
       // verify user doesn't leave field blank and that the value is a number
     alert("Please make sure that Fuel is entered as a number");
     event.preventDefault();
-  } else if (isNaN(cargoInput) || cargoInput == "") {
+  } else if (isNaN(cargo) || cargo == "") {
     // verify user doesn't leave field blank and that the value is a number
     alert("Please make sure that Cargo is entered as a number");
     event.preventDefault();
   } else {
     document.getElementById(
       "pilotStatus"
-    ).innerHTML = `Pilot ${pilotInput} is ready for launch`;
+    ).innerHTML = `Pilot ${pilot} is ready for launch`;
     document.getElementById(
       "copilotStatus"
-    ).innerHTML = `Copilot ${copilotInput} is ready for launch`;
+    ).innerHTML = `Copilot ${copilot} is ready for launch`;
     //if the fuel is under limit, make list visible, header goes red, and alert user that all is not well.
-    if (Number(fuelInput) < 10000) {
+    if (Number(fuel) < 10000) {
       document.getElementById("faultyItems").style.visibility = "visible";
       document.getElementById("launchStatus").style.color = "red";
       document.getElementById(
@@ -75,7 +75,7 @@ if (pilotInput == "" || !isNaN(pilotInput)) {
       checkOne = true;
     }
     //if the cargo mass is over limit, make list visible, header goes red, and alert user that all is not well.
-    if (Number(cargoInput) > 10000) {
+    if (Number(cargo) > 10000) {
       document.getElementById("faultyItems").style.visibility = "visible";
       document.getElementById("launchStatus").style.color = "red";
       document.getElementById(
